@@ -52,10 +52,6 @@ class ThreadCRUDApiView(DjangoMessageDRFAuthMixin, ThreadMixin, RequireUserConte
     """
     View that allows the reply of a specific message as well as the
     We will apply some pagination to return a list for the results and therefore
-
-    1. This API gets or creates the Thread
-    2. If a UUID is passed, then a Thread is validated and created but if only a user_id is
-    passed, then it will create a new thread and start a conversation.
     """
     serializer_class = THREAD_REPLY_SERIALIZER
 
