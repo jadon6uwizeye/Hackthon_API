@@ -6,7 +6,7 @@ from .models import Message, UserThread
 class UserThreadAdmin(admin.ModelAdmin):
     list_display = ["thread", "user", "unread", "deleted"]
     list_filter = ["unread", "deleted"]
-    raw_id_fields = ["user"]
+
 
 
 class MessageAdmin(admin.ModelAdmin):
