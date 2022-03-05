@@ -1,7 +1,7 @@
 """
 Settings used specifically for django_messages_drf
 """
-# pragma: no cover
+
 from django.conf import settings
 from django.utils.module_loading import import_string
 from typing import Any
