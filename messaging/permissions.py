@@ -9,12 +9,6 @@ from rest_framework.views import APIView
 
 
 class DjangoMessageDRFAuthMeta(type):
-    """
-    Metaclass to create/read from permissions property. Django Rest Framework doesn't implement this
-    directly where `permission_classes` instead of inheriting the super classes, just overrides so
-    DjangoMessageDRF will be adding an extra level of functionality by creating a permissions
-    attribute.
-    """
     def __new__(cls, name, bases, attrs):
         permissions = []
         for base in bases:
@@ -23,15 +17,6 @@ class DjangoMessageDRFAuthMeta(type):
         attrs['permissions'] = permissions + attrs.get('permissions', [])
         return type.__new__(cls, name, bases, attrs)
 
-
-class AccessMixin(metaclass=DjangoMessageDRFAuthMeta):
-    """
-    Django rest framework doesn't append permission_classes on inherited models which can cause
-    issues when it comes to call an API programmatically, this way we create a metaclass that will
-    read from a property custom from our subclasses and will append to the default
-    `permission_classes` on the subclasses of AccessMixin.
-    """
-    pass
 
 
 class DjangoMessageDRFAuthMixin(AccessMixin, APIView): # pragma: no cover
