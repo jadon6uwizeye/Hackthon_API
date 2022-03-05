@@ -18,5 +18,6 @@ from django.urls import include, path
 
 urlpatterns = [
     path('users/', include('Accounts.urls')),
+    path('message', include('messaging.urls')),
     path('rest-auth/', include('rest_auth.urls')),
 ]
